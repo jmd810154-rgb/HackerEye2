@@ -18,4 +18,4 @@ public class BootReceiver extends BroadcastReceiver {
             }
         }
     }
-}packagepackage
+}
